@@ -32,8 +32,8 @@
     font-weight: bolder;
     top: -60px;
     left: -20px;
-    font-family: "Jetbrains mono";
-    font-weight: 800;
+    font-family: "Jetbrains Mono";
+    font-weight: bolder;
     z-index: -1;
 }
 
