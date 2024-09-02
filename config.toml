@@ -1,4 +1,4 @@
-base_url = ""
+base_url = "."
 title = "0xkeeper.log"
 description = "it's just a place where I share my latest knowledge."
 default_language = "en"
