@@ -27,17 +27,18 @@
 
 .brand {
     position: absolute;
-    font-size: 400px;
+    font-size: 280px;
     color: var(--dark-1);
     font-weight: bolder;
     top: -60px;
     left: -20px;
-    z-index: -1;
+    font-family: "Jetbrains mono";
     font-weight: 800;
+    z-index: -1;
 }
 
 .posts-container {
-    margin-top: 200px;
+    margin-top: 130px;
     display: flex;
     column-gap: 20px;
     row-gap: 20px;
