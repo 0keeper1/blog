@@ -1,6 +1,5 @@
 @import url("./reset.css");
 @import url('https://fonts.cdnfonts.com/css/jetbrains-mono');
-@import url('https://fonts.cdnfonts.com/css/jetbrains-mono?styles=60140');
 
 :root {
     --fully-white: #FFFFFF;
@@ -16,7 +15,7 @@
 }
 
 * {
-    font-family: 'Jetbrains mono';
+    font-family: 'Jetbrains Mono';
     font-weight: normal;
     font-style: normal;
 }

@@ -29,11 +29,10 @@
     position: absolute;
     font-size: 280px;
     color: var(--dark-1);
-    font-weight: bolder;
     top: -60px;
     left: -20px;
     font-family: "Jetbrains Mono";
-    font-weight: bolder;
+    font-weight: normal;
     z-index: -1;
 }
 
