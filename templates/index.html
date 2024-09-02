@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link href="{{ get_url(path='css/index.css' ) }}" rel="stylesheet">
+<link href="{{ get_url(path='css/global.css' ) }}" rel="stylesheet">
+{% endblock styles %}
+
+{% block body %}
+<div class="container-root">
+    <div class="container">
+        <h1 class="site-title">0xkeeper</h1>
+        <h5 class="site-description">it's just a place where I share my latest knowledge.</h5>
+        <div class="posts-container">
+            {% for post in section.pages %}
+            <a href="{{ post.permalink | safe }}">
+                <div class="post">
+                    <div class="post-header">
+                        <h3>0xkeeper</h3>
+                        <span>{{ post.date }}</span>
+                    </div>
+                    <div class="post-title">
+                        <h1>{{ post.title }}</h1>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

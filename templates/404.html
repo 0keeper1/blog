@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link href="{{ get_url(path='css/index.css' ) }}" rel="stylesheet">
+<link href="{{ get_url(path='css/global.css' ) }}" rel="stylesheet">
+{% endblock styles %}
+
+{% block body %}
+<div class="container-root">
+    <div class="container">
+        <h1 class="site-title">404 Not Found.</h1>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,52 @@
+base_url = ""
+title = "0xkeeper.log"
+description = "it's just a place where I share my latest knowledge."
+default_language = "en"
+output_dir = "public"
+preserve_dotfiles_in_output = false
+compile_sass = false
+minify_html = true
+ignored_content = []
+ignored_static = []
+generate_feeds = true
+feed_filenames = ["rss.xml", "atom.xml"]
+hard_link_static = false
+author = "0xkeeper"
+taxonomies = []
+build_search_index = false
+generate_sitemap = true
+generate_robots_txt = true
+
+[markdown]
+highlight_code = true
+extra_syntaxes_and_themes = []
+highlight_theme = "material-dark"
+render_emoji = true
+external_links_target_blank = false
+external_links_no_follow = false
+external_links_no_referrer = false
+smart_punctuation = true
+lazy_async_image = true
+bottom_footnotes = false
+
+[link_checker]
+skip_prefixes = []
+skip_anchor_prefixes = []
+internal_level = "error"
+external_level = "error"
+paths_keep_dates = true
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+
+[search]
+include_title = true
+include_description = false
+include_date = false
+include_path = false
+include_content = true
+index_format = "elasticlunr_javascript"
+
+[extra]
