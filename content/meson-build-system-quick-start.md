@@ -1,16 +1,15 @@
 +++
 title = "Meson Build System Quick Start"
 description = "A fast and practical guide for setting up C projects with Meson"
-date = "2024-10-31"
+date = "2024-11-01"
 template = "post.html"
-draft = true
 +++
 
 In this article, I'll walk you through a quick way to dive into the Meson Build System, starting from scratch to create an executable project, add a library, and more.
 
 Let’s get started!
 
-### What will we cover?
+### What Will We Cover?
 1. Creating a basic project structure
 2. Setting up and configuring your project files
 3. Adding and organizing source and header files
@@ -28,7 +27,7 @@ meson init --type executable -l c -n myexec --builddir build -C ./myexec
 
 Here’s what each part of the command does:
 - `init`: Initializes a new project.
-- `--type`: Defines the project type; `executable` for executables, and `library` for libraries.
+- `--type`: Defines the project type; `executable` for executables and `library` for libraries.
 - `-l`: Specifies the project language (e.g., `c`, `c++`, `rust`, etc.).
 - `-n`: Sets the project name.
 - `--builddir`: Names the build directory.
@@ -75,7 +74,7 @@ int call_me_daddy() {
 
 Open the `meson.build` file and update it to look like this:
 
-```meson
+```c
 project(
     'myexec',
     'c',
@@ -104,6 +103,12 @@ myexec = executable(
 )
 ```
 
+Check these references:
+- [executable()](https://mesonbuild.com/Reference-manual_functions.html#executable)
+- [project()](https://mesonbuild.com/Reference-manual_functions.html#project)
+- [include_directories()](https://mesonbuild.com/Reference-manual_functions.html#include_directories)
+- [run_command()](https://mesonbuild.com/Reference-manual_functions.html#run_command)
+
 #### Step 4: Add a Test Directory
 
 Before proceeding, let’s create a test directory:
@@ -117,17 +122,12 @@ touch test/test.c
 
 Finally, add a library and test executable to your `meson.build` file:
 
-```meson
+```c
 myexec_lib = static_library(
     meson.project_name() + '_lib',
     sources : run_command('find', 'src', '-depth', '-type', 'f', '-not', '-name', 'main.c', check : true).stdout().strip().split('\n'),
     c_args : build_args,
     include_directories : header
-)
-
-dep = declare_dependency(
-    include_directories : header,
-    link_with : myexec_lib
 )
 
 myexec_test = executable(
@@ -139,3 +139,69 @@ myexec_test = executable(
 
 test('test', myexec_test)
 ```
+
+You can use `shared_library` instead.
+
+- [static_library()](https://mesonbuild.com/Reference-manual_functions.html#static_library)
+- [shared_library()](https://mesonbuild.com/Reference-manual_functions.html#shared_library)
+- [test()](https://mesonbuild.com/Reference-manual_functions.html#test)
+
+If you have a lot of test files that execute separately, use this instead of `myexec_test` and `test`:
+
+```c
+foreach test_file : run_command('find', 'test', '-depth', '-type', 'f', check : true).stdout().strip().split('\n')
+    test_name = test_file.split('/')[-1].substring(0, -2)
+    test_exe = executable(
+        test_name,
+        test_file,
+        link_with : myexec_lib,
+        build_by_default : false,
+        d_unittest : true,
+        include_directories : src_headers
+    )
+    test(test_name, test_exe)
+endforeach
+```
+
+Then add test files:
+
+```sh
+touch test/test_call_me_daddy.c
+```
+
+And the content is this:
+
+```c
+#include "funcs.h"
+
+int main() {
+    int res = call_me_daddy();
+    assert(res == 0);
+}
+```
+
+#### Step 6: Setup, Compile, Test, Run
+
+- Setup:
+```sh
+meson setup build
+```
+
+- Compile:
+```sh
+meson compile -v -C build
+```
+
+- Test:
+```sh
+meson test -v -C build
+```
+
+- Run:
+```sh
+./build/myexec
+```
+
+And that's it! I hope you enjoy it. If you have any questions, feel free to reach out:
+- [Telegram](https://t.me/my_acrp_exp)
+- [X (formerly Twitter)](https://x.com/0_keeper_1)
