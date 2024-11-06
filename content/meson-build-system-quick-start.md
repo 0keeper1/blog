@@ -20,7 +20,7 @@ To start, we’ll create a new project that compiles into an executable and is i
 
 Use this [LINK](https://mesonbuild.com/SimpleStart.html#installing-meson) to install Meson if you haven't already.
 
-```bash
+```sh,linenos
 mkdir myexec
 meson init --type executable -l c -n myexec --builddir build -C ./myexec
 ```
@@ -37,7 +37,7 @@ Here’s what each part of the command does:
 
 Navigate into the `myexec` folder to set up the file structure.
 
-```bash
+```sh,linenos
 cd myexec
 mkdir src include build
 mv myexec.c src/main.c
@@ -45,14 +45,14 @@ mv myexec.c src/main.c
 
 Next, create some additional source and header files.
 
-```bash
+```sh,linenos
 touch src/funcs.c
 touch include/funcs.h
 ```
 
 Here’s the content for `funcs.h`:
 
-```c
+```c,linenos
 #pragma once
 
 int call_me_daddy();
@@ -60,7 +60,7 @@ int call_me_daddy();
 
 And for `funcs.c`:
 
-```c
+```c,linenos
 #include "funcs.h"
 #include <stdio.h>
 
@@ -74,7 +74,7 @@ int call_me_daddy() {
 
 Open the `meson.build` file and update it to look like this:
 
-```c
+```c,linenos
 project(
     'myexec',
     'c',
@@ -113,7 +113,7 @@ Check these references:
 
 Before proceeding, let’s create a test directory:
 
-```sh
+```sh,linenos
 mkdir test
 touch test/test.c
 ```
@@ -122,7 +122,7 @@ touch test/test.c
 
 Finally, add a library and test executable to your `meson.build` file:
 
-```c
+```c,linenos
 myexec_lib = static_library(
     meson.project_name() + '_lib',
     sources : run_command('find', 'src', '-depth', '-type', 'f', '-not', '-name', 'main.c', check : true).stdout().strip().split('\n'),
@@ -148,7 +148,7 @@ You can use `shared_library` instead.
 
 If you have a lot of test files that execute separately, use this instead of `myexec_test` and `test`:
 
-```c
+```c,linenos
 foreach test_file : run_command('find', 'test', '-depth', '-type', 'f', check : true).stdout().strip().split('\n')
     test_name = test_file.split('/')[-1].substring(0, -2)
     test_exe = executable(
@@ -165,13 +165,13 @@ endforeach
 
 Then add test files:
 
-```sh
+```sh,linenos
 touch test/test_call_me_daddy.c
 ```
 
 And the content is this:
 
-```c
+```c,linenos
 #include "funcs.h"
 
 int main() {
@@ -183,22 +183,22 @@ int main() {
 #### Step 6: Setup, Compile, Test, Run
 
 - Setup:
-```sh
+```sh,linenos
 meson setup build
 ```
 
 - Compile:
-```sh
+```sh,linenos
 meson compile -v -C build
 ```
 
 - Test:
-```sh
+```sh,linenos
 meson test -v -C build
 ```
 
 - Run:
-```sh
+```sh,linenos
 ./build/myexec
 ```
 
