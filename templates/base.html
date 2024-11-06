@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>0xkeeper.log</title>
-    {% block rss %}
-    <link rel="alternate" type="application/rss+xml" title="RSS"
-        href="{{ get_url(path='rss.xml', trailing_slash=false) }}">
-    {% endblock %}
+    {% block title%}{% endblock %}
+    <style>
+        a:link {color: #FFFFFF;}
+        a:visited {color: #A0A0A0;}
+        a:hover {color: #FFFFFF;}
+        a:active {color: #FFFFFF;}
+    </style>
     <link rel="icon" type="image/x-icon" href="{{ get_url(path='favicon.ico' ) }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path='favicon-16x16.png' ) }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path='favicon-32x32.png' ) }}">
-    {% block styles %} {% endblock %}
 </head>
-
-<body>
-    {% block body %} {% endblock %}
+<body style="background: #111111; color: #FFFFFF" >
+  {% block body %}{% endblock %}
 </body>
-
 </html>
