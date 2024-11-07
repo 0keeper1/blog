@@ -3,63 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {% block title %}{% endblock %}
-
-    <style>
-        a:link { color: #FFFFFF; }
-        a:visited { color: #A0A0A0; }
-        a:hover { color: #FFFFFF; }
-        a:active { color: #FFFFFF; }
-
-        pre {
-            padding: 0.5rem;
-            overflow: scroll;
-        }
-
-        pre table {
-            width: fit-content;
-            border-collapse: collapse;
-        }
-
-        pre table td {
-            padding-right: 5px;
-        }
-
-        pre table td:nth-of-type(1) {
-            text-align: left;
-            user-select: none;
-        }
-
-        pre mark {
-            display: block;
-            background-color: #A0A0A0;
-        }
-    </style>
-
-    <link rel="icon" type="image/x-icon" href="{{ get_url(path='favicon.ico') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path='favicon-16x16.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path='favicon-32x32.png') }}">
-</head>
-<body style="background: #111111; color: #FFFFFF;">
-<header>
-    <nav>
-        <a href="{{ get_url(path='@/_index.md') }}">Home</a> |
-        <a href="{{ get_url(path='@/aboutme/_index.md') }}">About Me</a>
-    </nav>
-</header>
-<hr>
-{% block body %}{% endblock %}
-<hr>
-<footer>
-    <p>Made with ❤️ by 0xKeeper. &copy; 2024. All rights reserved.</p>
-</footer>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block title %}{% endblock %}
     <style>
         a:link { color: #FFFFFF; }
@@ -104,5 +47,3 @@
     <p>Made with ❤️ by 0xKeeper. &copy; 2024. All rights reserved.</p>
 </footer>
 </body>
-</html>
-
