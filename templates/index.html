@@ -1,13 +1,12 @@
 {% extends "base.html" %}
-
-{% block title %}<title>0xkeeper.log</title>{% endblock %}
-
+{% block title %}
+<title>0xkeeper.log</title>
+{% endblock %}
 {% block body %}
 <h3>it's just a place where I share my latest knowledge.</h3>
-
 <ul>
-{% for post in section.pages %}
+    {% for post in section.pages %}
     <li><a href="{{ post.permalink | safe }}">{{ post.title }}</a> < {{ post.date }} ></li>
-{% endfor %}
+    {% endfor %}
 </ul>
 {% endblock %}

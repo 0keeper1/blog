@@ -2,7 +2,6 @@
 title = "Meson Build System Quick Start"
 description = "A fast and practical guide for setting up C projects with Meson"
 date = "2024-11-01"
-template = "post.html"
 +++
 
 In this article, I'll walk you through a quick way to dive into the Meson Build System, starting from scratch to create an executable project, add a library, and more.
